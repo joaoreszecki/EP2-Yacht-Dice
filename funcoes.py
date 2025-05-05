@@ -28,3 +28,15 @@ def remover_dado(dados_rolados, dados_guardados, indice):
     dados_rolados.append(dado)
     
     return [dados_rolados, nova_lista_guardados]
+
+def calcula_pontos_regra_simples(lista_face):
+    pontuacoes = {}
+
+    for face in range(1, 7):
+        soma = 0
+        for dado in lista_face:
+            if dado == face:
+                soma += dado
+        pontuacoes[face] = soma
+
+    return pontuacoes

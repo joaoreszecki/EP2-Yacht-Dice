@@ -40,3 +40,9 @@ def calcula_pontos_regra_simples(lista_face):
         pontuacoes[face] = soma
 
     return pontuacoes
+
+def calcula_pontos_soma(lista_face):
+    soma = 0
+    for valor in lista_face:
+        soma += valor
+        return soma

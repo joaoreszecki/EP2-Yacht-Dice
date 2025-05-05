@@ -45,4 +45,4 @@ def calcula_pontos_soma(lista_face):
     soma = 0
     for valor in lista_face:
         soma += valor
-        return soma
+    return soma

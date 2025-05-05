@@ -46,3 +46,24 @@ def calcula_pontos_soma(lista_face):
     for valor in lista_face:
         soma += valor
     return soma
+
+def calcula_pontos_sequencia_baixa(lista_face):
+    unicos = []
+    for valor in lista_face:
+        if valor not in unicos:
+            unicos.append(valor)
+    
+    validos = [
+        [1,2,3,4],
+        [2,3,4,5],
+        [3,4,5,6]
+    ]
+
+    for sequencia in validos:
+        i = 0
+        for numero in sequencia:
+            if numero in unicos:
+                i += 1
+        if i == 4:
+            return 15
+    return 0

@@ -94,3 +94,33 @@ def calcula_pontos_sequencia_alta(lista_face):
         if i == 5:
             return 30
     return 0
+
+#Questão 8
+def calcula_pontos_full_house(lista_face):
+    contagem = []
+
+    for i in range(len(lista_face)):
+        numero = lista_face[i]
+        contador = 0
+        for j in range(len(lista_face)):
+            if lista_face[j] == numero:
+                contador += 1
+        if [numero, contador] not in contagem:
+            contagem.append([numero, contador])
+
+    tem_3 = False
+    tem_2 = False
+
+    for par in contagem:
+        if par[1] == 3:
+            tem_3 = True
+        elif par[1] == 2:
+            tem_2 = True
+
+    if tem_3 and tem_2:
+        soma = 0
+        for valor in lista_face:
+            soma += valor
+        return soma
+
+    return 0

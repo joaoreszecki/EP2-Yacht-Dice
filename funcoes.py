@@ -124,3 +124,23 @@ def calcula_pontos_full_house(lista_face):
         return soma
 
     return 0
+
+#Questão 9
+def calcula_pontos_quadra(lista_face):
+    frequencias = {}
+    soma = 0
+
+    for numero in lista_face:
+
+        soma += numero
+
+        if numero in frequencias:
+            frequencias[numero] += 1
+        else:
+            frequencias[numero] = 1
+
+    for valor in frequencias.values():
+        if valor >= 4:
+            return soma
+
+    return 0

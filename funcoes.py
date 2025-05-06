@@ -144,3 +144,18 @@ def calcula_pontos_quadra(lista_face):
             return soma
 
     return 0
+
+#Questão 10
+def calcula_pontos_quina (lista_face):
+    freq = {}
+    for numero in lista_face:
+        if numero in freq:
+            freq[numero] +=1
+        else:
+            freq[numero] = 1
+
+    for v in freq.values():
+        if v >= 5:
+            return 50
+    
+    return 0

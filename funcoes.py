@@ -211,3 +211,16 @@ def imprime_cartela(cartela):
             linhas.append(f"| {regra}:{espacamento}|    |")
     linhas.append("-"*25)
     return "\n".join(linhas)
+
+#Questão 12
+def faz_jogada(lista_face, categoria, cartelap):
+    pontos_simples = calcula_pontos_regra_simples(lista_face)
+    pontos_avancados = calcula_pontos_regra_avancada(lista_face)
+
+    if categoria in cartelap["regra_avancada"]:
+        cartelap["regra_avancada"][categoria] = pontos_avancados[categoria]
+    else:
+        categoria_i = int(categoria)
+        cartelap["regra_simples"][categoria_i] = pontos_simples[categoria_i]
+
+    return cartelap

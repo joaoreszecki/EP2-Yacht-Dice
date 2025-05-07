@@ -159,3 +159,55 @@ def calcula_pontos_quina (lista_face):
             return 50
     
     return 0
+
+#Questão 11
+def calcula_pontos_regra_avancada(lista_face):
+    pontos_quina = calcula_pontos_quina(lista_face)
+    pontos_full_house = calcula_pontos_full_house(lista_face)
+    pontos_quadra = calcula_pontos_quadra(lista_face)
+    pontos_soma = calcula_pontos_soma(lista_face)
+    pontos_seq_alta = calcula_pontos_sequencia_alta(lista_face)
+    pontos_seq_baixa = calcula_pontos_sequencia_baixa(lista_face)
+
+    pontuacoes = {
+        'cinco_iguais': pontos_quina,
+        'full_house': pontos_full_house,
+        'quadra': pontos_quadra,
+        'sem_combinacao': pontos_soma,
+        'sequencia_alta': pontos_seq_alta,
+        'sequencia_baixa': pontos_seq_baixa
+    }
+
+    return pontuacoes
+
+def faz_jogada(lista_face, escolha, cartela):
+    pontos_simples = calcula_pontos_regra_simples(lista_face)
+    pontos_avancados = calcula_pontos_regra_avancada(lista_face)
+
+    if escolha in pontos_avancados:
+        cartela['regra_avancada'][escolha] = pontos_avancados[escolha]
+    else:
+        cartela['regra_simples'][int(escolha)] = pontos_simples[int(escolha)]
+
+    return cartela
+
+def imprime_cartela(cartela):
+    linhas = []
+    linhas.append("Cartela de Pontos:")
+    linhas.append("-"*25)
+    for i in range(1, 7):
+        espacamento = " " * (15 - len(str(i)))
+        valor = cartela['regra_simples'][i]
+        if valor != -1:
+            linhas.append(f"| {i}:{espacamento}| {valor:02} |")
+        else:
+            linhas.append(f"| {i}:{espacamento}|    |")
+    for regra in cartela['regra_avancada']:
+        espacamento = " " * (15 - len(regra))
+        valor = cartela['regra_avancada'][regra]
+        if valor != -1:
+            linhas.append(f"| {regra}:{espacamento}| {valor:02} |")
+        else:
+            linhas.append(f"| {regra}:{espacamento}|    |")
+    linhas.append("-"*25)
+    return "\n".join(linhas)
